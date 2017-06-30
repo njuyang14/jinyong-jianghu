@@ -20,15 +20,16 @@ public class PageRankMain {
             String[] otherArgs = new GenericOptionsParser(conf,args).getRemainingArgs();
 
             if(otherArgs.length!=2){
-                System.out.println("Usage:invertIndex <in> <out>");
+                System.out.println("Usage:PageRank <in> <out>");
                 System.exit(2);
             }
 
             Job job = new Job(conf, "RelationTable");
+            //Job job = new Job();
             job.setJarByClass(PageRankMain.class);
             job.setInputFormatClass(TextInputFormat.class);
             job.setMapperClass(PageRankMapper.class);
-            job.setCombinerClass(PageRankCombiner.class);
+            //job.setCombinerClass(PageRankCombiner.class);
             //job.setPartitionerClass(NewPartitioner.class);
             job.setReducerClass(PageRankReducer.class);
             job.setMapOutputKeyClass(Text.class);
@@ -37,7 +38,8 @@ public class PageRankMain {
             job.setOutputValueClass(Text.class);
             FileInputFormat.addInputPath(job, new Path(args[0]));
             FileOutputFormat.setOutputPath(job, new Path(args[1]));
-            System.exit(job.waitForCompletion(true) ? 0 : 1);
+            //System.exit(job.waitForCompletion(true) ? 0 : 1);
+            job.waitForCompletion(true);
         }
         catch (Exception e) {
             e.printStackTrace();

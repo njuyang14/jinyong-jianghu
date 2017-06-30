@@ -14,7 +14,7 @@ public class PageRankMapper extends Mapper<Object, Text, Text, Text> {
     }
     /**
      *输入文件格式：
-     *"狄云 1#戚芳,3 戚长发,2 卜垣,1"
+     *"卜垣   1#戚长发 0.25,戚芳 0.5,狄云 0.25"
      */
     protected void map(Object key, Text value, Context context)
             throws IOException, InterruptedException {
@@ -23,10 +23,21 @@ public class PageRankMapper extends Mapper<Object, Text, Text, Text> {
         String line = value.toString().toLowerCase();
         StringTokenizer itr = new StringTokenizer(line,"\n");
         for(;itr.hasMoreTokens();){
-            temp = itr.nextToken(); //"狄云,戚芳 1"
+            temp = itr.nextToken(); //"卜垣   1#戚长发 0.25,戚芳 0.5,狄云 0.25"
             if(!temp.equals(" ")) {
-
+                String[] input = temp.split("\t");
+                String pageKey = input[0];//卜垣
+                String prAndLink[] = input[1].split("#");
+                double rank = Double.parseDouble(prAndLink[0]);//1
+                String[] linkPerson = prAndLink[1].split(",");//[戚长发 0.25][戚芳 0.5][狄云 0.25]...
+                for(int i=0;i<linkPerson.length;i++){
+                    String[] pair = linkPerson[i].split(" ");
+                    Person person = new Person(pair[0],Float.parseFloat(pair[1]));
+                    context.write(new Text(person.name),new Text(Double.toString(rank*person.rateOfEdge)));
+                }
+                context.write(new Text(pageKey),new Text("|"+input[1]));
             }
         }
+
     }
 }
