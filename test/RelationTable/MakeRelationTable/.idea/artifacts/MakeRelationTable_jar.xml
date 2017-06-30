@@ -3,6 +3,8 @@
     <output-path>$PROJECT_DIR$/out/artifacts/MakeRelationTable_jar</output-path>
     <root id="archive" name="MakeRelationTable.jar">
       <element id="module-output" name="MakeRelationTable" />
+      <element id="extracted-dir" path="$USER_HOME$/hadoop_installs/commons-cli-1.4/commons-cli-1.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/hadoop_installs/hadoop-2.7.1/share/hadoop/common/hadoop-common-2.7.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/hadoop_installs/hadoop-2.7.1/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.7.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/hadoop_installs/hadoop-2.7.1/share/hadoop/mapreduce/lib/xz-1.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/hadoop_installs/hadoop-2.7.1/share/hadoop/mapreduce/lib/asm-3.2.jar" path-in-jar="/" />
@@ -27,8 +29,6 @@
       <element id="extracted-dir" path="$USER_HOME$/hadoop_installs/hadoop-2.7.1/share/hadoop/mapreduce/lib/jackson-core-asl-1.9.13.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/hadoop_installs/hadoop-2.7.1/share/hadoop/mapreduce/lib/hadoop-annotations-2.7.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/hadoop_installs/hadoop-2.7.1/share/hadoop/mapreduce/lib/jackson-mapper-asl-1.9.13.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/hadoop_installs/commons-cli-1.4/commons-cli-1.4.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/hadoop_installs/hadoop-2.7.1/share/hadoop/common/hadoop-common-2.7.1.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

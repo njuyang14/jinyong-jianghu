@@ -37,8 +37,8 @@ public class RTableMapper extends Mapper<Object, Text, Text, Text> {
                 name1.set(name[1]);
                 StringBuilder out1 = new StringBuilder();
                 //output: key = "name" value = "name1 num"
-                context.write(name0, new Text(out0.append(name[1] + str[1]).toString()));
-                context.write(name1, new Text(out1.append(name[0] + str[1]).toString()));
+                context.write(name0, new Text(out0.append(name[1] +" "+ str[1]).toString()));
+                context.write(name1, new Text(out1.append(name[0] +" "+ str[1]).toString()));
             }
         }
     }
