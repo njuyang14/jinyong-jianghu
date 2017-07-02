@@ -31,14 +31,14 @@ public class WordConCurrence {
 //			wordConcurrenceJob.getConfiguration().setInt("window", Integer.parseInt(args[2]));
 
             job.setInputFormatClass(TextInputFormat.class);
-            job.setMapperClass(CurrenceMap.class);
+            job.setMapperClass(CurrenceMapper.class);
 //            job.setCombinerClass(CurrenceCombiner.class);
 //            job.setPartitionerClass(NewPartitioner.class);
-            job.setReducerClass(CurrenceReduce.class);
+            job.setReducerClass(CurrenceReducer.class);
             job.setMapOutputKeyClass(Text.class);
             job.setMapOutputValueClass(Text.class);
             job.setOutputKeyClass(Text.class);
-            job.setOutputValueClass(IntWritable.class);
+            job.setOutputValueClass(Text.class);
             FileInputFormat.addInputPath(job, new Path(args[0]));
             FileOutputFormat.setOutputPath(job, new Path(args[1]));
             System.exit(job.waitForCompletion(true) ? 0 : 1);
